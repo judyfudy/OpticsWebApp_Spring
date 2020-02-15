@@ -4,14 +4,20 @@ import com.bubnii.dao.interfaces.ProductDao;
 import com.bubnii.model.Product;
 import com.bubnii.model.ProductType;
 import com.bubnii.service.interfaces.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
     private ProductDao productDao;
+
+    public ProductServiceImpl(ProductDao productDao) {
+        this.productDao = productDao;
+    }
 
     @Override
     public List<Product> getAll() {
@@ -19,12 +25,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void addProductToCart(int personId, int productId) {
+    public void addProductToCart(final int personId, final int productId) {
         productDao.addProductToCart(personId, productId);
     }
 
     @Override
-    public List<Product> getProductsByType(int typeId) {
+    public List<Product> getProductsByType(final int typeId) {
         return productDao.getProductsByType(typeId);
     }
 
@@ -34,17 +40,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllProductsInCart(int userId) {
+    public List<Product> getAllProductsInCart(final int userId) {
         return productDao.getAllProductsInCart(userId);
     }
 
     @Override
-    public void deleteFromCart(int productId, int userId) {
+    public void deleteFromCart(final int productId, final int userId) {
         productDao.deleteFromCart(productId, userId);
     }
 
     @Override
-    public void clearCart(int userId) {
+    public void clearCart(final int userId) {
         productDao.clearCart(userId);
     }
 }

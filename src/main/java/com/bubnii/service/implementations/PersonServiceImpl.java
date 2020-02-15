@@ -3,18 +3,20 @@ package com.bubnii.service.implementations;
 import com.bubnii.dao.interfaces.PersonDao;
 import com.bubnii.model.Person;
 import com.bubnii.service.interfaces.PersonService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 @Transactional
 public class PersonServiceImpl implements PersonService {
 
-    @Autowired
-    private PersonDao personDao;
+    private final PersonDao personDao;
+
+    public PersonServiceImpl(PersonDao personDao) {
+        this.personDao = personDao;
+    }
 
     @Override
     public List<Person> getAll() {
@@ -22,7 +24,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void add(Person person) {
+    public void add(final Person person) {
         if (person.getFirstName() == null || person.getLastName() == null
                 || person.getUsername() == null || person.getPassword() == null) {
 
@@ -33,12 +35,12 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person get(int id)  {
+    public Person get(final int id) {
         return personDao.get(id);
     }
 
     @Override
-    public void update(Person person)  {
+    public void update(final Person person) {
         if (person.getFirstName() == null || person.getLastName() == null
                 || person.getUsername() == null || person.getPassword() == null) {
 
@@ -49,12 +51,12 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void delete(int id)  {
+    public void delete(final int id) {
         personDao.delete(id);
     }
 
     @Override
-    public Person getPersonByCredentials(String username)  {
+    public Person getPersonByCredentials(final String username) {
         if (username == null) {
 
             throw new IllegalArgumentException("username can't be null!");

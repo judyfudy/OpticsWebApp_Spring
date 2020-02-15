@@ -8,13 +8,13 @@ public interface PersonService {
 
     List<Person> getAll();
 
-    void add(Person person); // C
+    void add(final Person person); // C
 
-    Person get(int id); // R
+    Person get(final int id); // R
 
-    void update(Person person); // U
+    void update(final Person person); // U
 
-    void delete(int id); // D
+    void delete(final int id); // D
 
-    Person getPersonByCredentials(String username);
+    Person getPersonByCredentials(final String username);
 }
