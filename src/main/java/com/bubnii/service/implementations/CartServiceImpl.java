@@ -14,10 +14,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Properties;
 
 @Service
 public class CartServiceImpl implements CartService {
