@@ -5,7 +5,6 @@ import com.bubnii.model.Person;
 import com.bubnii.model.Product;
 import com.bubnii.model.ProductType;
 import com.bubnii.model.Worker;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,8 +16,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class HibernateConfig {
 
-    @Autowired
     private ApplicationContext context;
+
+    public HibernateConfig(ApplicationContext context) {
+        this.context = context;
+    }
 
     @Bean
     public LocalSessionFactoryBean getSessionFactory() {
