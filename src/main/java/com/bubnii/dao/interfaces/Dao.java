@@ -6,11 +6,11 @@ public interface Dao<T> {
 
     List<T> getAll();
 
-    void add(T t); // C
+    void add(final T t); // C
 
-    T get(int id); // R
+    T get(final int id); // R
 
-    void update(T t); // U
+    void update(final T t); // U
 
-    void delete(int id); // D
+    void delete(final int id); // D
 }

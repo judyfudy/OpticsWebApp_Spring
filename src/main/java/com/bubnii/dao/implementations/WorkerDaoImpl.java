@@ -4,13 +4,18 @@ import com.bubnii.dao.interfaces.WorkerDao;
 import com.bubnii.model.Worker;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class WorkerDaoImpl implements WorkerDao {
 
-    @Autowired
     private SessionFactory sessionFactory;
+
+    public WorkerDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public List<Worker> getAll() {
@@ -18,22 +23,22 @@ public class WorkerDaoImpl implements WorkerDao {
     }
 
     @Override
-    public void add(Worker worker) {
+    public void add(final Worker worker) {
         sessionFactory.getCurrentSession().persist(worker);
     }
 
     @Override
-    public Worker get(int id) {
+    public Worker get(final int id) {
         return sessionFactory.getCurrentSession().get(Worker.class, id);
     }
 
     @Override
-    public void update(Worker worker) {
+    public void update(final Worker worker) {
         sessionFactory.getCurrentSession().update(worker);
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(final int id) {
         sessionFactory.getCurrentSession().remove(id);
     }
 }

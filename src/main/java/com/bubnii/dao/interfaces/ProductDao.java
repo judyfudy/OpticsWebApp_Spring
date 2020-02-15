@@ -6,15 +6,15 @@ import com.bubnii.model.ProductType;
 import java.util.List;
 
 public interface ProductDao extends Dao<Product> {
-    void addProductToCart(int personId, int productId);
+    void addProductToCart(final int personId, final int productId);
 
-    List<Product> getProductsByType(int typeId);
+    List<Product> getProductsByType(final int typeId);
 
     List<ProductType> getAllTypesOfProducts();
 
-    List<Product> getAllProductsInCart(int userId);
+    List<Product> getAllProductsInCart(final int userId);
 
-    void deleteFromCart(int productId, int userId);
+    void deleteFromCart(final int productId, final int userId);
 
-    void clearCart(int userId);
+    void clearCart(final int userId);
 }
