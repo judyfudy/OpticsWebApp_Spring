@@ -33,7 +33,6 @@ public class ProductController {
         return "products";
     }
 
-
     @GetMapping(value = "/getProductsByType")
     @ResponseBody
     public ResponseEntity<List<Product>> getProductsByType(@RequestParam("typeId") final int typeId) {
