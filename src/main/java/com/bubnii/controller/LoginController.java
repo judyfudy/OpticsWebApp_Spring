@@ -15,7 +15,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping(value = "/login")
 public class LoginController {
 
     private static Logger logger = Logger.getLogger(LoggerInterceptor.class);
@@ -32,7 +31,7 @@ public class LoginController {
      * @return login view
      */
 
-    @GetMapping
+    @GetMapping(value = "/login")
     public String onLogin() {
         return "login";
     }
@@ -45,7 +44,7 @@ public class LoginController {
      * @return status code response
      */
 
-    @PostMapping
+    @PostMapping(value = "/login")
     public @ResponseBody
     ResponseEntity<Object> login(@RequestParam("username") final String username,
                                  @RequestParam("password") final String password) {
