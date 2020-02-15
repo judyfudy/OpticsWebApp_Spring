@@ -55,7 +55,7 @@
                     data.forEach(function (element) {
                         document.getElementById("productsContainer").innerHTML +=
                             ${sessionScope.user == null} ? '<div class="card mt-5 ml-5 mb-5" style="display: inline-block;">'
-                            + '<img src="/images/sticker_1.jpg  " width="100%" height="30%">' /* + element.photo */
+                            + '<img src="../../resources/images/sticker_1.jpg" width="100%" height="30%">' /* + element.photo */
                             + '<p>' + element.name + ' ' + element.brand + ' ' + element.model + '</p>'
                             + '<p class="price">Ціна: ' + element.price + ' грн.</p>'
                             + '<p class="small">Кількість:' + element.quantity + '</p>'
@@ -63,7 +63,7 @@
                             + '</div>'
                             :
                             '<div class="card mt-5 ml-5 mb-5" style="display: inline-block;">'
-                            + '<img src="/images/sticker_1.jpg  " width="100%" height="30%">' /* + element.photo */
+                            + '<img src="../../resources/images/sticker_1.jpg" width="100%" height="30%">' /* + element.photo */
                             + '<p>' + element.name + ' ' + element.brand + ' ' + element.model + '</p>'
                             + '<p class="price">Ціна: ' + element.price + ' грн.</p>'
                             + '<p class="small">Кількість:' + element.quantity + '</p>'
