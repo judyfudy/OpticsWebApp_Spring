@@ -30,3 +30,4 @@ out/
 .project
 .settings/
 target/
+/src/main/webapp/resources/images/
