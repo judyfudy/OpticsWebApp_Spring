@@ -5,26 +5,26 @@ import com.bubnii.model.Person;
 import com.bubnii.service.interfaces.PersonService;
 import com.bubnii.utils.HashPasswordUtil;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
+@RequestMapping(value = "/login")
 public class LoginController {
 
     private static Logger logger = Logger.getLogger(LoggerInterceptor.class);
 
-    @Autowired
-    PersonService personService;
+    private final PersonService personService;
+
+    public LoginController(PersonService personService) {
+        this.personService = personService;
+    }
 
     /**
      * Handles get request to welcome page
@@ -32,7 +32,7 @@ public class LoginController {
      * @return login view
      */
 
-    @GetMapping(value = "/login")
+    @GetMapping
     public String onLogin() {
         return "login";
     }
@@ -45,10 +45,10 @@ public class LoginController {
      * @return status code response
      */
 
-    @PostMapping(value = "/login")
+    @PostMapping
     public @ResponseBody
-    ResponseEntity<Object> login(@RequestParam("username") String username,
-                                 @RequestParam("password") String password) {
+    ResponseEntity<Object> login(@RequestParam("username") final String username,
+                                 @RequestParam("password") final String password) {
 
         Person person = null;
 
@@ -60,7 +60,7 @@ public class LoginController {
 
         if (person != null) {
 
-            boolean validPassword = HashPasswordUtil.checkPassword(password, person.getPassword());
+            final boolean validPassword = HashPasswordUtil.checkPassword(password, person.getPassword());
 
             if (validPassword) {
 
@@ -78,7 +78,7 @@ public class LoginController {
 
     }
 
-    /** 
+    /**
      * Handles get request to log out
      *
      * @return welcome view

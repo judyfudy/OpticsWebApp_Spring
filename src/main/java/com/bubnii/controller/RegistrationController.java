@@ -6,32 +6,32 @@ import com.bubnii.model.Person;
 import com.bubnii.service.interfaces.PersonService;
 import com.bubnii.utils.HashPasswordUtil;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
+@RequestMapping(value = "/registration")
 public class RegistrationController {
     private static Logger logger = Logger.getLogger(LoggerInterceptor.class);
 
-    @Autowired
-    PersonService personService;
+    private final PersonService personService;
+
+    public RegistrationController(PersonService personService) {
+        this.personService = personService;
+    }
 
     /**
      * Handles get request to registration view
      *
      * @return registration view
      */
-    @GetMapping(value = "/registration")
+    @GetMapping
     public String onRegistration() {
         return "registration";
     }
@@ -45,17 +45,17 @@ public class RegistrationController {
      * @param password  person's password
      * @return status code response
      */
-    @PostMapping(value = "/registration")
+    @PostMapping
     public @ResponseBody
-    ResponseEntity<Object> register(@RequestParam("firstName") String firstName,
-                                    @RequestParam("lastName") String lastName,
-                                    @RequestParam("username") String username,
-                                    @RequestParam("password") String password,
-                                    @RequestParam("email") String email) {
+    ResponseEntity<Object> register(@RequestParam("firstName") final String firstName,
+                                    @RequestParam("lastName") final String lastName,
+                                    @RequestParam("username") final String username,
+                                    @RequestParam("password") final String password,
+                                    @RequestParam("email") final String email) {
 
         Person person = personService.getPersonByCredentials(username);
 
-        String securePassword = HashPasswordUtil.hashPassword(password);
+        final String securePassword = HashPasswordUtil.hashPassword(password);
 
         if (person == null) {
 

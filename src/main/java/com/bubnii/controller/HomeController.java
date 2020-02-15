@@ -16,7 +16,7 @@ public class HomeController {
      * @return logical view name
      */
     @GetMapping(value = "/")
-    public String onhome() {
+    public String onHome() {
         return "/homePage";
     }
 
