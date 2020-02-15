@@ -3,17 +3,19 @@ package com.bubnii.model;
 import com.bubnii.enums.PersonType;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "person")
-public class Person {
+public class Person implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int idPerson;
-
 
     @Column(name = "username")
     private String username;
@@ -33,6 +35,14 @@ public class Person {
 
     @Column(name = "email")
     private String email;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "cart",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "product_id")}
+    )
+    private List<Product> productList = new LinkedList<>();
 
     public Person() {
     }
@@ -54,6 +64,14 @@ public class Person {
         this.lastName = lastName;
         this.email = email;
         this.personType = personType;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
     public int getIdPerson() {

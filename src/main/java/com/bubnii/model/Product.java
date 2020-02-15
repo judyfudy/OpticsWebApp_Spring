@@ -1,11 +1,14 @@
 package com.bubnii.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,22 +37,14 @@ public class Product {
     private String model;
 
     @Column(name = "product_type_id")
-    private String type;
+    private int product_type_id;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public int getPrice() {
@@ -108,13 +103,21 @@ public class Product {
         this.model = model;
     }
 
+    public int getProduct_type_id() {
+        return product_type_id;
+    }
+
+    public void setProduct_type_id(int product_type_id) {
+        this.product_type_id = product_type_id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
         return id == product.id &&
-                Objects.equals(type, product.type) &&
+                Objects.equals(product_type_id, product.product_type_id) &&
                 Objects.equals(name, product.name) &&
                 Objects.equals(description, product.description) &&
                 Objects.equals(brand, product.brand) &&
@@ -123,16 +126,16 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, type, name, description, brand, model);
+        return Objects.hash(id, product_type_id, name, description, brand, model);
     }
 
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", type='" + type + '\'' +
                 ", price=" + price +
                 ", name='" + name + '\'' +
+                ", product_type_id='" + product_type_id + '\''+
                 ", quantity=" + quantity +
                 ", description='" + description + '\'' +
                 ", photo='" + photo + '\'' +
