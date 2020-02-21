@@ -15,32 +15,28 @@
 <body>
 <!-- Footer -->
 <footer>
-    <div class="footer">
-        <div class="row">
-            <div class="column" style="background-color: lightblue">
+        <div class="footer">
+        <ul style="margin: 0">
+            <li>
                 <h4>Адреса</h4>
-                <hr>
-                <p>Україна, Львівська обл.<br>м.Львів, вул.Кульпарківська 117<br>
+                <p style="margin: 25px">Україна, Львівська обл.<br>м.Львів, вул.Кульпарківська 117<br>
                     E-mail: bubniyo@gmail.com</p>
-            </div>
-            <div class="column" style="background-color: lightblue">
+            </li>
+            <li>
                 <h4>Телефон</h4>
-                <hr>
-                <p>Тел.факс +38 (05743) 5-44-74 <br>
-                    Тел. +38 (050) 300-80-65, (095) 034-56-54, <br>
-                    (050) 401-89-22, (095) 511-86-94, (050) 193-73-07, <br>
-                    (050) 405-97-25, (097) 839-73-79, (097) 849-42-57,
-                </p>
-            </div>
-            <div class="column" style="background-color: lightblue">
+                <p style="margin: 25px">Тел.факс +38 (05743) 5-44-74 <br>
+                Тел. +38 (050) 300-80-65, (095) 034-56-54, <br>
+                (050) 401-89-22, (095) 511-86-94, (050) 193-73-07
+            </p>
+            </li>
+            <li>
                 <h4>Графік роботи</h4>
-                <hr>
-                <p><b>Працюємо Пн-Пт</b>: 10:00 до 18:00. <br>
-                    <b>Сб</b>: 10:00 до 16:00. <br>
-                    <b>Нд</b>: Вихідний</p>
-            </div>
+                <p style="margin: 25px"><b>Працюємо Пн-Пт</b>: 10:00 до 18:00. <br>
+                <b>Сб</b>: 10:00 до 16:00. <br>
+                <b>Нд</b>: Вихідний</p>
+            </li>
+        </ul>
         </div>
-    </div>
 </footer>
 <!-- Footer -->
 </body>

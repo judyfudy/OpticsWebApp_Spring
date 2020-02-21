@@ -15,14 +15,14 @@
 <body>
 <jsp:include page="../components/header.jsp"/>
 
-<select onchange="showProductsByOption(value)" class="custom-select ml-5 mt-5" style="width: 15%">
+<select onchange="showProductsByOption(value)" class="custom-select ml-5 mt-5" style="width: 30%">
     <option selected hidden>Каталог</option>
     <c:forEach items="${productTypes}" var="productType">
         <option value="${productType.id}">${productType.name}</option>
     </c:forEach>
 </select>
 
-<div id="productsContainer"></div>
+<div class="row" id="productsContainer"></div>
 
 <script>
     function addToCart(id) {
@@ -50,24 +50,28 @@
                 },
                 dataType: 'json',
                 contentType: 'application/json; charset=UTF-8',
-                success: function (data)  {
+                success: function (data) {
                     document.getElementById("productsContainer").innerHTML = "";
                     data.forEach(function (element) {
                         document.getElementById("productsContainer").innerHTML +=
-                            ${sessionScope.user == null} ? '<div class="card mt-5 ml-5 mb-5" style="display: inline-block;">'
+                            ${sessionScope.user == null} ? '<div class="column">'
+                            + '<div class="card mt-5 ml-5 mb-5">'
                             + '<img src="../../resources/images/sticker_1.jpg" width="100%" height="30%">' /* + element.photo */
                             + '<p>' + element.name + ' ' + element.brand + ' ' + element.model + '</p>'
                             + '<p class="price">Ціна: ' + element.price + ' грн.</p>'
                             + '<p class="small">Кількість:' + element.quantity + '</p>'
                             + '<a href="/login" class="button">Увійдіть, щоб добавити в корзину</a>'
                             + '</div>'
+                            + '</div>'
                             :
-                            '<div class="card mt-5 ml-5 mb-5" style="display: inline-block;">'
+                            '<div class="column">'
+                            + '<div class="card mt-5 ml-5 mb-5">'
                             + '<img src="../../resources/images/sticker_1.jpg" width="100%" height="30%">' /* + element.photo */
                             + '<p>' + element.name + ' ' + element.brand + ' ' + element.model + '</p>'
                             + '<p class="price">Ціна: ' + element.price + ' грн.</p>'
                             + '<p class="small">Кількість:' + element.quantity + '</p>'
                             + '<button onclick="addToCart(' + element.id + ')">Добавити в корзину' + '</button>'
+                            + '</div>'
                             + '</div>';
                     });
                 }

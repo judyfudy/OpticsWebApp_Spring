@@ -26,3 +26,13 @@
 .card button:hover {
     opacity: 0.7;
 }
+
+.row#productsContainer {
+    display: flex;
+    margin: 0;
+}
+
+.row#cartRow {
+    display: inline-block;
+    margin: 0;
+}

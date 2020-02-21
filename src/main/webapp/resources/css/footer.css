@@ -1,50 +1,15 @@
-html {
-    height: 100%;
+ul, li {
+    display: inline-block;
 }
 
-body {
-    min-height: 100%;
-    padding: 0;
-    margin: 0;
-    position: relative;
-}
-
-header {
-    height: 50px;
-    background: lightcyan;
-}
-
-body::after {
-    content: '';
-    display: block;
-    height: 100px; /* Set same as footer's height */
-}
-
-.footer {
+footer {
+    background-color: #343a40;
+    color: white;
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #efefef;
+    margin: 0;
     text-align: center;
-    height: 100px;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-/* Create three equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 33.33%;
-    padding: 10px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
 }
 

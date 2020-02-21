@@ -15,22 +15,20 @@
 <body>
 <jsp:include page="../components/header.jsp"/>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 img">
-            <img src="<c:url value="../../resources/images/sticker_1.jpg"/>" width="50%" height="100%" class="img-rounded">
-        </div>
-        <div class="col-md-6 details">
-            <blockquote>
-                <h5>${personInfo.firstName} ${personInfo.lastName}</h5>
-                <small><cite title="Source Title">Lviv, Ukraine  <i class="icon-map-marker"></i></cite></small>
-            </blockquote>
-            <p>
-                ${personInfo.email} <br>
-                April 22, 2001
-            </p>
-        </div>
-    </div>
+
+<div class="card" id="profileCard">
+    <img src="<c:url value="../../resources/images/sticker_1.jpg"/>" width="100%">
+    <h1>${personInfo.firstName} ${personInfo.lastName}</h1>
+    <p class="title">CEO & Founder, Example</p>
+    <p>${personInfo.email}</p>
+    <ul>
+    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+    </ul>
 </div>
+
+
 </body>
 </html>
