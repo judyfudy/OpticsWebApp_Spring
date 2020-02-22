@@ -43,7 +43,7 @@
 
     <link type="text/css" rel="stylesheet" href="<c:url value="../../resources/css/header.css"/>">
 </head>
-<body>
+<body onload="startTime()">
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <a class="navbar-brand" href="<c:url value="/"/>"><b>ОПТИКА</b></a>
 
@@ -70,6 +70,9 @@
                 <a href="https://instagram.com/dan4oooos"><i class="fa fa-instagram"></i></a>
                 <a href="https://www.facebook.com/bubnsy"><i class="fa fa-facebook"></i></a>
             </li>
+            <li style="margin-left: 50px; margin-top: 8px">
+                <p id="txt" style="color: white"></p>
+            </li>
         </ul>
         <div class="navbar-nav ml-auto">
             <c:if test="${empty sessionScope.user}">
@@ -92,5 +95,25 @@
     </div>
 </nav>
 <jsp:include page="../components/footer.jsp"/>
+
+<script type="text/javascript">
+    function startTime() {
+        var tm = new Date();
+        var h = tm.getHours();
+        var m = tm.getMinutes();
+        var s = tm.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+        t = setTimeout('startTime()', 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+</script>
 </body>
 </html>
