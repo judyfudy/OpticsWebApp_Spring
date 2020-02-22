@@ -44,8 +44,8 @@
     <link type="text/css" rel="stylesheet" href="<c:url value="../../resources/css/header.css"/>">
 </head>
 <body onload="startTime()">
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-    <a class="navbar-brand" href="<c:url value="/"/>"><b>ОПТИКА</b></a>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark" style="font-size: 15px">
+    <a class="navbar-brand" href="<c:url value="/"/>" style="margin-bottom: 10px"><b>ОПТИКА</b></a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +74,7 @@
                 <p id="txt" style="color: white"></p>
             </li>
         </ul>
-        <div class="navbar-nav ml-auto">
+        <div class="navbar-nav ml-auto mb-auto">
             <c:if test="${empty sessionScope.user}">
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/login"><b>Увійти</b></a>
@@ -82,13 +82,13 @@
             </c:if>
             <c:if test="${empty sessionScope.user == false}">
                 <li class="nav-item">
-                    <a class="nav-link" style="margin-left: 10px" href="${pageContext.request.contextPath}/cart"><b>Корзина</b></a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/cart"><b>Корзина</b></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/profile"><b>Профіль</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="margin-left: 10px" href="${pageContext.request.contextPath}/logout"><b>Вийти</b></a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/logout"><b>Вийти</b></a>
                 </li>
             </c:if>
         </div>
