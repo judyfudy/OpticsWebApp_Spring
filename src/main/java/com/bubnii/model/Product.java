@@ -2,8 +2,6 @@ package com.bubnii.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -37,7 +35,7 @@ public class Product implements Serializable {
     private String model;
 
     @Column(name = "product_type_id")
-    private int product_type_id;
+    private int productTypeId;
 
     public Integer getId() {
         return id;
@@ -103,12 +101,12 @@ public class Product implements Serializable {
         this.model = model;
     }
 
-    public int getProduct_type_id() {
-        return product_type_id;
+    public int getProductTypeId() {
+        return productTypeId;
     }
 
-    public void setProduct_type_id(int product_type_id) {
-        this.product_type_id = product_type_id;
+    public void setProductTypeId(int product_type_id) {
+        this.productTypeId = product_type_id;
     }
 
     @Override
@@ -117,7 +115,7 @@ public class Product implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
         return id == product.id &&
-                Objects.equals(product_type_id, product.product_type_id) &&
+                Objects.equals(productTypeId, product.productTypeId) &&
                 Objects.equals(name, product.name) &&
                 Objects.equals(description, product.description) &&
                 Objects.equals(brand, product.brand) &&
@@ -126,7 +124,7 @@ public class Product implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, product_type_id, name, description, brand, model);
+        return Objects.hash(id, productTypeId, name, description, brand, model);
     }
 
     @Override
@@ -135,7 +133,7 @@ public class Product implements Serializable {
                 "id=" + id +
                 ", price=" + price +
                 ", name='" + name + '\'' +
-                ", product_type_id='" + product_type_id + '\''+
+                ", product_type_id='" + productTypeId + '\''+
                 ", quantity=" + quantity +
                 ", description='" + description + '\'' +
                 ", photo='" + photo + '\'' +
