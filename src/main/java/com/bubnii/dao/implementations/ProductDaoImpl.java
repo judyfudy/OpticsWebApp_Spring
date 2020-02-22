@@ -29,7 +29,7 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public List<Product> getProductsByType(final int typeId) {
         Query<Product> query = sessionFactory.getCurrentSession()
-                .createQuery("from Product where product_type_id=:typeId")
+                .createQuery("from Product where productTypeId=:typeId")
                 .setParameter("typeId", typeId);
 
         return query.list();
