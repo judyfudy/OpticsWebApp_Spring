@@ -11,7 +11,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
     private HttpServletRequest httpRequest;
     private HttpServletResponse httpResponse;
 
-    private String[] loginRequiredUrls = {"/profile", "/booking"};
+    private String[] loginRequiredUrls = {"/profile"};
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
