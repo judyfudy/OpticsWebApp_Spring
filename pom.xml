@@ -11,7 +11,7 @@
 
     <properties>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <spring.version>5.2.3.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
         <hibernate.version>5.4.11.Final</hibernate.version>
         <hibernate.validator>6.0.16.Final</hibernate.validator>
         <c3p0.version>0.9.5.5</c3p0.version>
